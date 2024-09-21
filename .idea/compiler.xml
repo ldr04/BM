@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="BM-BORROW" />
+        <module name="BM-BOOK" />
+        <module name="BM-ORDER" />
+        <module name="Gateway" />
+        <module name="BM-DONATE" />
+        <module name="BM-USER" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="BM-BOOK" options="-parameters" />
+      <module name="BM-BORROW" options="-parameters" />
+      <module name="BM-DONATE" options="-parameters" />
+      <module name="BM-ORDER" options="-parameters" />
+      <module name="BM-USER" options="-parameters" />
+      <module name="Gateway" options="-parameters" />
+    </option>
+  </component>
+</project>

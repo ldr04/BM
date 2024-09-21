@@ -1,0 +1,51 @@
+server:
+  port: 20000
+
+spring:
+  application:
+    name: bm-gateway-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        username: nacos
+        password: nacos
+        namespace: public
+    gateway:
+      # 路由规则
+      routes:
+        - id: user_service_route  # 路由的唯一标识
+          uri: lb://bm-user-service # 要转发到什么服务   lb:使用默认的负载均衡策略
+          predicates:
+            # http://localhost:20000/user-serv/users/list
+            - Path=/user-serv/**
+          filters:
+            - StripPrefix=1
+        - id: book_service_route  # 路由的唯一标识
+          uri: lb://bm-book-service # 要转发到什么服务   lb:使用默认的负载均衡策略
+          predicates:
+            # http://localhost:20000/book-serv/book/selectAllBook
+            - Path=/book-serv/**
+          filters:
+            - StripPrefix=1
+        - id: borrow_service_route  # 路由的唯一标识
+          uri: lb://bm-borrow-service # 要转发到什么服务   lb:使用默认的负载均衡策略
+          predicates:
+            # http://localhost:20000/borrow-serv/borrow/borrowBook
+            - Path=/borrow-serv/**
+          filters:
+            - StripPrefix=1
+        - id: order_service_route  # 路由的唯一标识
+          uri: lb://bm-order-service # 要转发到什么服务   lb:使用默认的负载均衡策略
+          predicates:
+            # http://localhost:20000/order-serv/orders/listOrders
+            - Path=/order-serv/**
+          filters:
+            - StripPrefix=1
+        - id: donate_service_route  # 路由的唯一标识
+          uri: lb://bm-donate-service # 要转发到什么服务   lb:使用默认的负载均衡策略
+          predicates:
+            # http://localhost:20000/donate-serv/donate/addDonate
+            - Path=/donate-serv/**
+          filters:
+            - StripPrefix=1

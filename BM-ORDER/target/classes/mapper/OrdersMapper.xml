@@ -1,0 +1,18 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.etoak.java.mapper.OrdersMapper">
+    <update id="updateOrderStatus">
+        update orders set status = 1
+        where order_no = #{orderNo} and status = #{status};
+    </update>
+    <select id="computeByYear">
+        select sum(total_price)
+        from orders
+        where YEAR(approval_time) = #{yearNeed}
+    </select>
+    <select id="computeByPublisher">
+        select sum(total_price)
+        from orders
+        where publisher = #{publisher}
+    </select>
+</mapper>
